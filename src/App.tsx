@@ -2,7 +2,7 @@ import React, {FC, useState, ChangeEvent} from 'react';
 import './App.css';
 import {ITask} from "./interfaces";
 import ToDoTask from "./Component/ToDoTask";
-
+//TO DO
 const App: FC = () => {
     const [task, setTask] = useState<string>('')
     const [priority, setPriority] = useState<number>(0)
