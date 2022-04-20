@@ -2,6 +2,7 @@ import React, {FC, useState, ChangeEvent} from 'react';
 import './App.css';
 import {ITask} from "./interfaces";
 import ToDoTask from "./Component/ToDoTask";
+import Background from "./Component/Background";
 //TO DO
 const App: FC = () => {
     const [task, setTask] = useState<string>('')
@@ -28,10 +29,11 @@ const App: FC = () => {
             return task.taskName !== taskRemove
         }))
     }
+
     return (
         <div className="App">
             <div className={'header'}>
-                    <input type="text" placeholder={'Task...'} name={'task'} onChange={handleChange}/>
+                    <input type="text" placeholder={'Task...'} name={'task'} value={task} onChange={handleChange}/>
                     <input type="number" name={'priority'} onChange={handleChange} value={priority} placeholder={'Priority Number'}/>
                     <button onClick={addTask}>Add Task</button>
             </div>
@@ -40,6 +42,8 @@ const App: FC = () => {
                     return <ToDoTask key={key} task={task} removeTask={removeTask}/>
                 })}
             </div>
+
+            {toDoList.length!==0 && <Background query={toDoList[toDoList.length-1].taskName}/>}
         </div>
     );
 }
